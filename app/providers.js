@@ -12,7 +12,7 @@ export default function Providers({children}){
     if(!mounted){
         return<>{children}</>
     }
-    return <ThemeProvider attribute="class">
+    return <ThemeProvider attribute="class" defaultTheme="light">
         {children}
     </ThemeProvider>
 }
