@@ -53,24 +53,28 @@ const TextAnimation = () => {
   };
 
   useEffect(() => {
+    // Reset any existing animations
+    gsap.set("#animatedText", {
+        attr: { startOffset: "0%" }
+    });
+
     // Create the animation
     gsap.to("#animatedText", {
-      duration: 20,
-      repeat: -1,
-      ease: "none",
-      attr: {
-        startOffset: "-60%"
-      },
-      motionPath: {
-        path: "#path1",
-        align: "#path1",
-        autoRotate: false,
-      }
+        duration: 30,
+        repeat: -1,
+        ease: "none",
+        attr: {
+            startOffset: "-100%"
+        },
+        motionPath: {
+            path: "#path1",
+            align: "#path1",
+            autoRotate: false,
+        }
     });
   }, []);
 
-//   const repeatedText = "DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING";
-  const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • "
+  const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ";
 
   return (
     <div className=" w-full overflow-hidden">
@@ -88,9 +92,9 @@ const TextAnimation = () => {
           strokeWidth="102"
           fill="none"
         />
-        <text className="text-[54px] text-center md:text-[31px] lg:text-[64px] font-bold fill-[#fff] dark:fill-[#121212] tracking-[-1.28] " dominant-baseline="middle" text-anchor="middle">
-          <textPath id="animatedText" href="#path1" startOffset="0%" alignment-baseline="middle">
-            {repeatedText.repeat(10)}
+        <text dy="5" className="text-[54px] text-center md:text-[31px] lg:text-[64px] font-bold fill-[#fff] dark:fill-[#121212] tracking-[-1.28] " dominant-baseline="middle" text-anchor="middle">
+          <textPath id="animatedText" href="#path1" startOffset="0%">
+            {repeatedText.repeat(24)}
           </textPath>
         </text>
       </svg>

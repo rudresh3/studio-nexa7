@@ -32,7 +32,7 @@ export default function Home() {
           <h1 className="text-[42px] font-[700] text-[#121212] dark:text-[#fff] md:text-[60px] lg:text-[128px] tracking-[-2.5]">
             Coming Soon!
           </h1>
-          <p className="font-['Space_Mono'] uppercase text-[10px] font-[400] text-[#5B5B5B] dark:text-[#939393] text-center md:text-[14px] lg:text-[32px]">
+          <p className="font-['Space_Mono'] uppercase text-[10px] font-normal text-[#5B5B5B] dark:text-[#939393] text-center md:text-[14px] lg:text-[32px]">
             No service charge while you wait for us
           </p>
         </div>
@@ -60,7 +60,7 @@ export default function Home() {
         )}
       </div>
       <div className="mt-[46px]">
-        <p className="text-[18px] text-center mx-[20px] font-[400] tracking-[-0.36px] md:text-[24px] md:mx-[122px] lg:text-[49px] lg:mx-[350px] lg:tracking-[-0.98px]">
+        <p className="text-[18px] text-center mx-[20px] font-medium	 tracking-[-0.36px] md:text-[24px] md:mx-[122px] lg:text-[49px] lg:mx-[350px] lg:tracking-[-0.98px]">
           While we're crafting something extraordinary, grab exclusive discounts
           before the big reveal
         </p>

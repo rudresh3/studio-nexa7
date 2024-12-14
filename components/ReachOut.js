@@ -178,7 +178,7 @@ const ReachOut = () => {
                 Phone
               </label>
               <div className="flex gap-2">
-                <select className="w-20 px-2 py-2 border border-[#121212] focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] dark:border-white  text-[#817F7F] dark:placeholder:text-[#585858] lg:h-[60px]">
+                <select className="w-[65px] lg:w-20 px-2 py-2 border border-[#121212] focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] dark:border-white  text-[#817F7F] dark:placeholder:text-[#585858] lg:h-[60px]">
                   <option value="+91">+91</option>
                   <option value="+1">+1</option>
                   <option value="+44">+44</option>

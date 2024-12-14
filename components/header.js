@@ -22,26 +22,36 @@ const Header = () => {
           />
         )}
       </div>
-      <div className="bg-[#121212] dark:bg-white h-[35px] px-[16px] flex gap-[6px] lg:gap-[10px] rounded-[27px] items-center lg:h-[65px] lg:py-[14px] md:px-[30px] lg:rounded-full cursor-pointer">
-      {theme === "dark" ? (
-          <img
-            src="/phoneblack.svg"
-            alt="Dark mode logo"
-            className="w-[13px] h-[13px] lg:w-[22px] lg:h-[22px]"
-          />
-        ) : (
-          <img
-            src="/phone.svg"
-            alt="Light mode logo"
-            className="w-[13px] h-[13px] lg:w-[22px] lg:h-[22px]"
-          />
-        )}
-        {/* <Image src="/phone.svg" width={13} height={13} alt="Light mode logo" /> */}
+      <div className="bg-[#121212] dark:bg-white hover:bg-transparent dark:hover:bg-transparent group transition-all duration-300 h-[35px] px-[16px] flex gap-[6px] lg:gap-[10px] rounded-[27px] items-center lg:h-[65px] lg:py-[14px] md:px-[30px] lg:rounded-full cursor-pointer border-2 border-[#121212] dark:border-white">
+        {/* Light mode phone icon (visible in normal state) */}
+        <img
+          src="/phone.svg"
+          alt="Light mode logo"
+          className="w-[13px] h-[13px] lg:w-[22px] lg:h-[22px] block dark:hidden group-hover:hidden"
+        />
+        {/* Dark mode phone icon (visible in normal state) */}
+        <img
+          src="/phoneblack.svg"
+          alt="Dark mode logo"
+          className="w-[13px] h-[13px] lg:w-[22px] lg:h-[22px] hidden dark:block dark:group-hover:hidden"
+        />
+        {/* Light mode phone icon (visible on hover) */}
+        <img
+          src="/phoneblack.svg"
+          alt="Dark mode logo"
+          className="w-[13px] h-[13px] lg:w-[22px] lg:h-[22px] hidden group-hover:block dark:group-hover:hidden"
+        />
+        {/* Dark mode phone icon (visible on hover) */}
+        <img
+          src="/phone.svg"
+          alt="Light mode logo"
+          className="w-[13px] h-[13px] lg:w-[22px] lg:h-[22px] hidden dark:group-hover:block"
+        />
         <a 
           href="https://wa.me/8553393366"
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-[#fff] dark:text-[#121212] text-[12px] lg:text-[20px] lg:tracking-[-0.4px] font-normal leading-normal"
+          className="text-white dark:text-[#121212] group-hover:text-[#121212] dark:group-hover:text-white transition-colors duration-300 text-[12px] lg:text-[20px] lg:tracking-[-0.4px] font-semibold leading-normal"
         >
           Contact Us
         </a>
