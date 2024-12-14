@@ -131,7 +131,7 @@ const ReachOut = () => {
                     errors.fullName 
                       ? 'border-red-500 dark:border-red-500' 
                       : 'border-[#121212] dark:border-white'
-                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px]`}
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none`}
                 />
                 {errors.fullName && (
                   <img 
@@ -160,7 +160,7 @@ const ReachOut = () => {
                     errors.email 
                       ? 'border-red-500 dark:border-red-500' 
                       : 'border-[#121212] dark:border-white'
-                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:border-[2px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px]`}
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none`}
                 />
                 {errors.email && (
                   <img 
@@ -178,7 +178,7 @@ const ReachOut = () => {
                 Phone
               </label>
               <div className="flex gap-2">
-                <select className="w-[65px] lg:w-20 px-2 py-2  border-[#121212] focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] dark:border-white  text-[#817F7F] dark:placeholder:text-[#585858] lg:h-[60px] border-[0.9px] lg:border-[2px]">
+                <select className="w-[65px] lg:w-20 px-2 py-2  border-[#121212] focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] dark:border-white  text-[#817F7F] dark:placeholder:text-[#585858] lg:h-[60px] border-[0.9px] lg:border-[2px] rounded-none">
                   <option value="+91">+91</option>
                   <option value="+1">+1</option>
                   <option value="+44">+44</option>
@@ -190,7 +190,7 @@ const ReachOut = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="XXXXX XXXXX"
-                  className="flex-1 px-4 py-2 border-[#121212] dark:border-white   focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] lg:border-[2px] border-[0.9px] lg:h-[60px] lg:text-[19.89px]"
+                  className="flex-1 px-4 py-2 border-[#121212] dark:border-white   focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] lg:border-[2px] border-[0.9px] lg:h-[60px] lg:text-[19.89px] rounded-none"
                 />
               </div>
             </div>
@@ -208,7 +208,7 @@ const ReachOut = () => {
                   onChange={handleChange}
                   rows="4"
                   placeholder="Share a few details about you or your project..."
-                  className="w-full px-4 py-2 border border-[#121212] dark:border-white focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] resize-none lg:border-[2px] lg:h-[157px] lg:pt-4 lg:mb-[4px] lg:text-[19.89px]"
+                  className="w-full px-4 py-2 border border-[#121212] dark:border-white focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] resize-none lg:border-[2px] lg:h-[157px] lg:pt-4 lg:mb-[4px] lg:text-[19.89px] rounded-none"
                 ></textarea>
               </div>
             </div>
