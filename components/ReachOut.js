@@ -178,11 +178,17 @@ const ReachOut = () => {
                 Phone
               </label>
               <div className="flex gap-2">
-                <select className="w-[65px] lg:w-20 px-2 py-2  border-[#121212] focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] dark:border-white  text-[#817F7F] dark:placeholder:text-[#585858] lg:h-[60px] border-[0.9px] lg:border-[2px] rounded-none">
-                  <option value="+91">+91</option>
-                  <option value="+1">+1</option>
-                  <option value="+44">+44</option>
-                </select>
+              <select
+  id="phone"
+  className={`w-[65px] lg:w-20 px-2 py-2 border-[#121212] focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] dark:border-white text-[#121212] dark:text-[#fff] dark:placeholder:text-[#585858] lg:h-[60px] border-[0.9px] lg:border-[2px] rounded-none appearance-none
+    ${theme === "dark" ? 'bg-[url("/arrowWhite.svg")]' : 'bg-[url("/downArrow.svg")]'}
+    bg-no-repeat  bg-[length:16px_10px] bg-[right_7px_center] pr-[1rem]`}
+>
+  <option value="+91">+91</option>
+  <option value="+1">+1</option>
+  <option value="+44">+44</option>
+</select>
+             
                 <input
                   type="tel"
                   id="phone"

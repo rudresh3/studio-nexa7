@@ -7,10 +7,10 @@ html {
 }
 
 
-select {
+/* select {
   appearance: none;
-  background-image: url('/downArrow.svg'); /* Replace with your arrow icon */
+  background-image: url('/downArrow.svg'); 
   background-repeat: no-repeat;
-  background-position: right 10px center; /* Adjust for proper alignment */
-  padding-right: 2.5rem; /* Leave space for the arrow */
-}
+  background-position: right 10px center; 
+  padding-right: 2.5rem; 
+} */
