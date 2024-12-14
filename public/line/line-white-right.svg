@@ -1,0 +1,20 @@
+<svg width="237" height="518" viewBox="0 0 237 518" fill="none" xmlns="http://www.w3.org/2000/svg">
+   <style>
+    path {
+      stroke-width: 24px;
+    }
+    
+    @media (min-width: 768px) {
+      path {
+        stroke-width: 24px;
+      }
+    }
+    
+    @media (min-width: 1024px) {
+      path {
+        stroke-width: 30px;
+      }
+    }
+  </style>
+<path d="M152.307 16.6389C116.872 26.1243 45.1393 80.9979 55.6789 139.625C66.2186 198.252 136.26 216.15 148.436 283.821C163.806 369.246 -1.01412 316.45 18.819 431.733C38.6521 547.015 255.354 437.826 215.319 509.733" stroke="white" />
+</svg>

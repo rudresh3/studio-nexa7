@@ -11,7 +11,21 @@ export default {
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
+      animation: {
+        'move-text': 'move-text 10s linear infinite',
+      },
+      keyframes: {
+        'move-text': {
+          '0%': {
+            transform: 'translateX(100%)',  // Start from the right
+          },
+          '100%': {
+            transform: 'translateX(-100%)',  // End at the left
+          },
+        },
+      },
     },
   },
   plugins: [],
+  darkMode: 'class'
 };
