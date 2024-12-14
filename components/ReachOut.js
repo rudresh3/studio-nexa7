@@ -127,7 +127,11 @@ const ReachOut = () => {
                   value={formData.fullName}
                   onChange={handleChange}
                   placeholder="e.g., John Doe"
-                  className={`w-full px-4 py-2 border ${errors.fullName ? 'border-red-500' : 'border-[#121212]'} focus:outline-none focus:ring-1 dark:border-white focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px]`}
+                  className={`w-full px-4 py-2 border ${
+                    errors.fullName 
+                      ? 'border-red-500 dark:border-red-500' 
+                      : 'border-[#121212] dark:border-white'
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px]`}
                 />
                 {errors.fullName && (
                   <img 
@@ -152,7 +156,11 @@ const ReachOut = () => {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder="e.g., johndoe@gmail.com"
-                  className={`w-full px-4 py-2 border ${errors.email ? 'border-red-500' : 'border-[#121212]'} dark:border-white focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px]`}
+                  className={`w-full px-4 py-2 border ${
+                    errors.email 
+                      ? 'border-red-500 dark:border-red-500' 
+                      : 'border-[#121212] dark:border-white'
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#817F7F] dark:placeholder:text-[#585858] border-[0.9px] lg:h-[60px] lg:text-[19.89px]`}
                 />
                 {errors.email && (
                   <img 
