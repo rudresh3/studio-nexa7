@@ -107,7 +107,7 @@ const ReachOut = () => {
 
       {/* Existing Content */}
       <div className="flex items-center justify-center flex-col mx-[20px] bg-[#121212]/1 shadow border-[0.217px] border-[#e1e1e1] dark:border-[#9292926e] backdrop-blur-[83.46px] pb-[23px] lg:pb-[72px] md:mx-[127px] lg:mx-[283px] lg:pt-[40px] lg:backdrop-blur-[75.08px] dark:bg-white/4 dark:lg:shadow-[0_3.302px_37.96px_8.23px_rgba(0,0,0,0.03)]">
-        <p className="text-center text-[#121212] text-[14px] font-normal font-['Space_Mono'] uppercase mt-[12px] lg:text-[33px] lg:mt-[40pxpx] dark:text-white">
+        <p className="text-center text-[#121212] text-[14px] font-normal font-['Space_Mono'] uppercase mt-[20px] lg:text-[33px] lg:mt-[40pxpx] dark:text-white">
           reach out to us now!
         </p>
 
