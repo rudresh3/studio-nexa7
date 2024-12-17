@@ -17,11 +17,11 @@ export default function Home() {
       style={{
         backgroundImage:
           theme === "dark"
-            ? "url('/Backgroud Grid (1).svg')"
-            : "url('/Backgroud Grid.svg')",
+            ? "url('/Backgroud-Grid-dark.svg')"
+            : "url('/Backgroud-Grid-light.svg')",
         backgroundRepeat: "repeat",
         backgroundSize: "80%",
-        backgroundPosition: "top center",
+        backgroundPosition: "top left",
       }}
     >
       <div />
