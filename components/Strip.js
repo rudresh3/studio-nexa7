@@ -66,7 +66,7 @@ const TextAnimation = () => {
         { attr: { startOffset: "0%" } },
         { 
             duration: 30,
-            attr: { startOffset: "-100%" },
+            attr: { startOffset: "-98.3%" },
             motionPath: {
                 path: "#path1",
                 align: "#path1",
