@@ -1,13 +1,15 @@
+'use client';
 import React, { useState } from "react";
 import { useTheme } from "next-themes";
 import Footer from "./Footer";
-
 const StarCorners = ({ position }) => {
   const { theme } = useTheme();
   const imageSrc = theme === "dark" ? "/start-dark.svg" : "/star.svg";
-  
+
   return (
-    <div className={`absolute ${position} flex items-center w-full justify-between p-3 lg:p-6`}>
+    <div
+      className={`absolute ${position} flex items-center w-full justify-between p-3 lg:p-6`}
+    >
       <div className="w-[16px] md:w-[16px] lg:w-auto">
         <img src={imageSrc} alt="decorative star" className="w-full h-auto" />
       </div>
@@ -30,6 +32,9 @@ const ReachOut = () => {
 
   const [errors, setErrors] = useState({});
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState({ type: '', message: '' });
+
   const validateForm = () => {
     let tempErrors = {};
 
@@ -46,13 +51,6 @@ const ReachOut = () => {
       tempErrors.email = "Email is required";
     } else if (!emailRegex.test(formData.email)) {
       tempErrors.email = "Please enter a valid email";
-    }
-
-    // Description validation (minimum 10 characters)
-    if (!formData.description.trim()) {
-      tempErrors.description = "Description is required";
-    } else if (formData.description.trim().length < 10) {
-      tempErrors.description = "Description must be at least 10 characters";
     }
 
     setErrors(tempErrors);
@@ -74,23 +72,62 @@ const ReachOut = () => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log('Form submission started');
+
     if (validateForm()) {
-      // Form is valid, proceed with submission
-      console.log("Form submitted:", formData);
+      setIsSubmitting(true);
+      setSubmitStatus({ type: '', message: '' });
 
-      // Reset form data to initial state
-      setFormData({
-        fullName: "",
-        email: "",
-        phone: "",
-        description: "",
-      });
+      try {
+        console.log('Sending data:', formData);
+        const response = await fetch('/api/send-email', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData),
+        });
 
-      // Clear any existing errors
-      setErrors({});
+        console.log('Response received:', response);
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || 'Failed to send message');
+        }
+
+        const data = await response.json();
+        console.log('Success data:', data);
+
+        setSubmitStatus({
+          type: 'success',
+          message: 'Thank you for reaching out! We\'ll get back to you soon.',
+        });
+
+        setFormData({
+          fullName: "",
+          email: "",
+          phone: "",
+          description: "",
+        });
+      } catch (error) {
+        console.error('Submission error:', error);
+        setSubmitStatus({
+          type: 'error',
+          message: error.message || 'Failed to send message. Please try again later.',
+        });
+      } finally {
+        setIsSubmitting(false);
+      }
+    } else {
+      console.log('Validation failed', errors);
     }
+  };
+
+  const statusStyles = {
+    success: 'text-green-500',
+    error: 'text-red-500',
   };
 
   return (
@@ -98,14 +135,14 @@ const ReachOut = () => {
       <div className="flex items-center justify-center flex-col mx-[20px] bg-[#121212]/1 shadow border-[0.217px] border-[#e1e1e1] pb-[23px] lg:pb-[72px] md:mx-[127px] lg:mx-[283px] lg:pt-[40px] bg-[#121212] dark:bg-white dark:lg:shadow-[0_3.302px_37.96px_8.23px_rgba(0,0,0,0.03)] relative">
         <StarCorners position="top-1" />
         <StarCorners position="bottom-0" />
-        
+
         <p className="text-center text-[#fff] text-[14px] font-normal font-['Space_Mono'] uppercase my-[20px] lg:text-[33px] lg:mt-[40pxpx] dark:text-[#121212]">
           reach out to us now!
         </p>
 
         {/* Form Section */}
         <div className="px-4 mt-6 w-full lg:flex lg:justify-center lg:text-[20px]">
-          <form className="space-y-4 lg:w-[720px] " onSubmit={handleSubmit}>
+          <form className="space-y-4 lg:w-[720px]" onSubmit={handleSubmit}>
             {/* Full Name */}
             <div>
               <label
@@ -126,7 +163,7 @@ const ReachOut = () => {
                     errors.fullName
                       ? "border-red-500 dark:border-red-500"
                       : "border-[#fff] dark:border-[#121212]"
-                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none`}
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none text-[#fff] dark:text-[#121212]`}
                 />
                 {errors.fullName && (
                   <img
@@ -158,7 +195,7 @@ const ReachOut = () => {
                     errors.email
                       ? "border-red-500 dark:border-red-500"
                       : "border-[#fff] dark:border-[#121212]"
-                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none`}
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none text-[#fff] dark:text-[#121212]`}
                 />
                 {errors.email && (
                   <img
@@ -189,9 +226,9 @@ const ReachOut = () => {
     }
     bg-no-repeat  bg-[length:16px_10px] bg-[right_7px_center] pr-[1rem]`}
                 >
-                  <option value="+91">+91</option>
-                  <option value="+1">+1</option>
-                  <option value="+44">+44</option>
+                  <option value="+91">+91 🇮🇳</option>
+                  <option value="+1">+1 🇺🇸</option>
+                  <option value="+44">+44 🇬🇧</option>
                 </select>
 
                 <input
@@ -201,7 +238,7 @@ const ReachOut = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   placeholder="XXXXX XXXXX"
-                  className="flex-1 px-4 py-2 border-[#fff] dark:border-[#121212]   focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] lg:border-[2px] border-[0.9px] lg:h-[60px] lg:text-[19.89px] rounded-none"
+                  className="flex-1 px-4 py-2 border-[#fff] dark:border-[#121212]   focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] lg:border-[2px] border-[0.9px] lg:h-[60px] lg:text-[19.89px] rounded-none text-[#fff] dark:text-[#121212]"
                 />
               </div>
             </div>
@@ -222,18 +259,28 @@ const ReachOut = () => {
                   onChange={handleChange}
                   rows="4"
                   placeholder="Share a few details about you or your project..."
-                  className="w-full px-4 py-2 border border-[#fff] dark:border-[#121212]  focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] resize-none lg:border-[2px] lg:h-[157px] lg:pt-4 lg:mb-[4px] lg:text-[19.89px] rounded-none"
+                  className="w-full px-4 py-2 border border-[#fff] dark:border-[#121212]  focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] resize-none lg:border-[2px] lg:h-[157px] lg:pt-4 lg:mb-[4px] lg:text-[19.89px] rounded-none text-[#fff] dark:text-[#121212]"
                 ></textarea>
               </div>
             </div>
+
+            {/* Add this before the submit button */}
+            {submitStatus.message && (
+              <div className={`text-center ${statusStyles[submitStatus.type]}`}>
+                {submitStatus.message}
+              </div>
+            )}
 
             {/* Submit Button */}
             <div className="flex justify-center">
               <button
                 type="submit"
-                className="bg-[#fff] dark:bg-[#121212]  py-[8px] lg:py-[14px] px-[59px] lg:px-[94px]  transition-colors font-['Space_Mono'] uppercase text-[#121212] dark:text-[#fff] lg:text-[24px] lg:leading-normal lg:font-normal"
+                disabled={isSubmitting}
+                className={`bg-[#fff] dark:bg-[#121212] py-[8px] lg:py-[14px] px-[59px] lg:px-[94px] transition-colors font-['Space_Mono'] uppercase text-[#121212] dark:text-[#fff] lg:text-[24px] lg:leading-normal lg:font-normal ${
+                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                }`}
               >
-                Submit
+                {isSubmitting ? 'Submitting...' : 'Submit'}
               </button>
             </div>
           </form>
