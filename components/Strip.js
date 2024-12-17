@@ -55,7 +55,7 @@ const TextAnimation = () => {
   // Add function to get animation offset based on screen size
   const getAnimationOffset = () => {
     if (width < 768) { // Mobile
-      return "-97%";
+      return "-98%";
     } else if (width < 1024) { // Tablet
       return "-98%";
     } else { // Desktop
