@@ -52,6 +52,17 @@ const TextAnimation = () => {
     }
   };
 
+  // Add function to get animation offset based on screen size
+  const getAnimationOffset = () => {
+    if (width < 768) { // Mobile
+      return "-97%";
+    } else if (width < 1024) { // Tablet
+      return "-98%";
+    } else { // Desktop
+      return "-98.3%";
+    }
+  };
+
   useEffect(() => {
     // Create a timeline for smooth looping
     const tl = gsap.timeline({
@@ -61,12 +72,12 @@ const TextAnimation = () => {
         }
     });
 
-    // Animate from 0% to -100%
+    // Update animation with dynamic offset
     tl.fromTo("#animatedText", 
         { attr: { startOffset: "0%" } },
         { 
             duration: 30,
-            attr: { startOffset: "-98.3%" },
+            attr: { startOffset: getAnimationOffset() },
             motionPath: {
                 path: "#path1",
                 align: "#path1",
@@ -77,7 +88,7 @@ const TextAnimation = () => {
 
     // Cleanup function
     return () => tl.kill();
-  }, []);
+  }, [width]); // Add width as dependency
 
   const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ";
 
