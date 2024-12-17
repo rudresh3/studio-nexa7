@@ -1,5 +1,6 @@
 import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
+import { supabase } from '@/lib/supabase';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -10,12 +11,30 @@ export async function POST(request) {
 
     const { fullName, email, phone, description } = body;
 
-    // Validate only required fields (removed description)
+    // Validate required fields
     if (!fullName || !email) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
       );
+    }
+
+    // Store form submission in Supabase
+    const { data, error: supabaseError } = await supabase
+      .from('contact_submissions')
+      .insert([
+        {
+          full_name: fullName,
+          email,
+          phone: phone || null,
+          description: description || null,
+          submitted_at: new Date().toISOString(),
+        }
+      ]);
+
+    if (supabaseError) {
+      console.error('Supabase error:', supabaseError);
+      throw new Error('Failed to store submission');
     }
 
     console.log('Sending team email...');
@@ -47,13 +66,13 @@ export async function POST(request) {
     console.log('User email sent:', userData);
 
     return NextResponse.json(
-      { message: 'Emails sent successfully' },
+      { message: 'Submission stored and emails sent successfully' },
       { status: 200 }
     );
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Error:', error);
     return NextResponse.json(
-      { error: error.message || 'Error sending email' },
+      { error: error.message || 'Error processing submission' },
       { status: 500 }
     );
   }
