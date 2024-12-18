@@ -52,43 +52,36 @@ const TextAnimation = () => {
     }
   };
 
-  // Add function to get animation offset based on screen size
-  const getAnimationOffset = () => {
-    if (width < 768) { // Mobile
-      return "-98%";
-    } else if (width < 1024) { // Tablet
-      return "-98%";
-    } else { // Desktop
-      return "-98.3%";
-    }
-  };
-
   useEffect(() => {
-    // Create a timeline for smooth looping
-    const tl = gsap.timeline({
-        repeat: -1,
-        defaults: {
-            ease: "none"
-        }
-    });
+    // Reset any existing animations first
+    gsap.killTweensOf("#animatedText");
+    
+    const startPosition = "100%";
+    const endPosition = "-300%"; // Increased offset for longer text
 
-    // Update animation with dynamic offset
-    tl.fromTo("#animatedText", 
-        { attr: { startOffset: "0%" } },
-        { 
-            duration: 30,
-            attr: { startOffset: getAnimationOffset() },
-            motionPath: {
-                path: "#path1",
-                align: "#path1",
-                autoRotate: false,
-            }
+    // Create infinite loop animation
+    function startAnimation() {
+      gsap.set("#animatedText", { attr: { startOffset: startPosition }});
+      
+      gsap.to("#animatedText", {
+        duration: 90, // Increased duration for longer text
+        attr: { startOffset: endPosition },
+        ease: "none",
+        repeat: -1,
+        onRepeat: function() {
+          gsap.set("#animatedText", { attr: { startOffset: startPosition }});
         }
-    );
+      });
+    }
+
+    startAnimation();
 
     // Cleanup function
-    return () => tl.kill();
-  }, [width]); // Add width as dependency
+    return () => {
+      gsap.killTweensOf("#animatedText");
+      gsap.set("#animatedText", { attr: { startOffset: startPosition }});
+    };
+  }, [width]);
 
   const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ";
 
@@ -108,9 +101,14 @@ const TextAnimation = () => {
           strokeWidth="102"
           fill="none"
         />
-        <text dy="5" className="text-[54px] text-center md:text-[31px] lg:text-[64px] font-bold fill-[#fff] dark:fill-[#121212] tracking-[-1.28] " dominant-baseline="middle" text-anchor="middle">
+        <text 
+          dy="5" 
+          className="text-[54px] text-center md:text-[31px] lg:text-[64px] font-bold fill-[#fff] dark:fill-[#121212] tracking-[-1.28] " 
+          dominantBaseline="middle" 
+          textAnchor="middle"
+        >
           <textPath id="animatedText" href="#path1" startOffset="0%">
-            {repeatedText.repeat(6)}
+            {repeatedText.repeat(20)}
           </textPath>
         </text>
       </svg>
