@@ -64,13 +64,15 @@ const TextAnimation = () => {
       gsap.set("#animatedText", { attr: { startOffset: startPosition }});
       
       gsap.to("#animatedText", {
-        duration: 90, // Increased duration for longer text
+        duration: 60, // Reduced duration for better performance
         attr: { startOffset: endPosition },
-        ease: "none",
+        ease: "linear", // Changed to linear for smoother performance
         repeat: -1,
         onRepeat: function() {
           gsap.set("#animatedText", { attr: { startOffset: startPosition }});
-        }
+        },
+        force3D: true, // Enable hardware acceleration
+        willChange: "transform" // Optimize for animations
       });
     }
 
@@ -83,7 +85,7 @@ const TextAnimation = () => {
     };
   }, [width]);
 
-  const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ";
+  const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ".repeat(3); // Reduced repetitions
 
   return (
     <div className=" w-full overflow-hidden">
@@ -108,7 +110,7 @@ const TextAnimation = () => {
           textAnchor="middle"
         >
           <textPath id="animatedText" href="#path1" startOffset="0%">
-            {repeatedText.repeat(20)}
+            {repeatedText}
           </textPath>
         </text>
       </svg>
