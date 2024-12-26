@@ -85,7 +85,7 @@ const TextAnimation = () => {
     };
   }, [width]);
 
-  const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ".repeat(3); // Reduced repetitions
+  const repeatedText = "WEBSITE DESIGN & DEVELOPMENT • UIUX DESIGN • APP DEVELOPMENT • BRANDING • ".repeat(10); // Reduced repetitions
 
   return (
     <div className=" w-full overflow-hidden">
