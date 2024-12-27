@@ -102,7 +102,7 @@ const ReachOut = () => {
 
         setSubmitStatus({
           type: 'success',
-          message: 'Thank you for reaching out! We\'ll get back to you soon.',
+          message: 'Thanks for reaching out! We\’re brewing up something awesome for you!',
         });
 
         setFormData({
@@ -166,11 +166,16 @@ const ReachOut = () => {
                   } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none text-[#fff] dark:text-[#121212]`}
                 />
                 {errors.fullName && (
-                  <img
-                    src="/error.svg"
-                    alt="error"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
-                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 group">
+                    <img
+                      src="/error.svg"
+                      alt="error"
+                      className="w-4 h-4"
+                    />
+                    <span className="pointer-events-none absolute -top-9 right-0 w-max opacity-0 transition-opacity group-hover:opacity-100 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm px-2 py-1 rounded border-[2px] border-red-500">
+                      This field is required
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
@@ -198,11 +203,16 @@ const ReachOut = () => {
                   } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none text-[#fff] dark:text-[#121212]`}
                 />
                 {errors.email && (
-                  <img
-                    src="/error.svg"
-                    alt="error"
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 w-4 h-4"
-                  />
+                  <div className="absolute right-3 top-1/2 transform -translate-y-1/2 group">
+                    <img
+                      src="/error.svg"
+                      alt="error"
+                      className="w-4 h-4"
+                    />
+                    <span className="pointer-events-none absolute -top-9 right-0 w-max opacity-0 transition-opacity group-hover:opacity-100 bg-gray-900 dark:bg-white text-white dark:text-gray-900 text-sm px-2 py-1 rounded border-red-500 border-[2px]">
+                    This field is required
+                    </span>
+                  </div>
                 )}
               </div>
             </div>
@@ -226,9 +236,9 @@ const ReachOut = () => {
     }
     bg-no-repeat  bg-[length:16px_10px] bg-[right_7px_center] pr-[1rem]`}
                 >
-                  <option value="+91">+91 🇮🇳</option>
-                  <option value="+1">+1 🇺🇸</option>
-                  <option value="+44">+44 🇬🇧</option>
+                  <option value="+91">+91</option>
+                  <option value="+1">+1</option>
+                  <option value="+44">+44</option>
                 </select>
 
                 <input
@@ -276,11 +286,27 @@ const ReachOut = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className={`bg-[#fff] dark:bg-[#121212] py-[8px] lg:py-[14px] px-[59px] lg:px-[94px] transition-colors font-['Space_Mono'] uppercase text-[#121212] dark:text-[#fff] lg:text-[24px] lg:leading-normal lg:font-normal ${
-                  isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                className={`bg-[#fff] dark:bg-[#121212] py-[8px] lg:py-[14px] px-[59px] lg:px-[94px] transition-all duration-500 ease-in-out font-['Space_Mono'] uppercase text-[#121212] dark:text-[#fff] lg:text-[24px] lg:leading-normal lg:font-normal group relative overflow-hidden ${
+                  isSubmitting ? 'cursor-not-allowed' : ''
                 }`}
               >
-                {isSubmitting ? 'Submitting...' : 'Submit'}
+                <div className="flex items-center justify-center relative">
+                  <span className={`transition-all duration-500 ease-in-out absolute ${isSubmitting ? 'opacity-0 invisible' : ''} group-hover:-translate-x-5 inline-block`}>
+                    Submit
+                  </span>
+                  <span className="invisible">Submit</span>
+                  {isSubmitting ? (
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+                      <div className="w-6 h-6 border-2 border-transparent border-t-current border-r-current rounded-full animate-[spin_0.6s_linear_infinite]" />
+                    </div>
+                  ) : (
+                    <img
+                      src="/right-arrow.svg"
+                      alt="submit"
+                      className="w-5 h-5 lg:w-8 lg:h-8 transition-all duration-500 ease-in-out absolute left-[calc(50%+40px)] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 [filter:invert(0)] dark:[filter:invert(1)]"
+                    />
+                  )}
+                </div>
               </button>
             </div>
           </form>
