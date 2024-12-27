@@ -163,7 +163,7 @@ const ReachOut = () => {
                     errors.fullName
                       ? "border-red-500 dark:border-red-500"
                       : "border-[#fff] dark:border-[#121212]"
-                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[2px] rounded-none text-[#fff] dark:text-[#121212]`}
+                  } focus:outline-none focus:ring-1 focus:ring-[#121212] bg-transparent font-['Space_Mono'] placeholder:font-['Space_Mono'] placeholder:text-[#585858] dark:placeholder:text-[#817F7F] border-[0.9px] lg:h-[60px] lg:text-[19.89px] lg:border-[1.6px] rounded-none text-[#fff] dark:text-[#121212]`}
                 />
                 {errors.fullName && (
                   <div className="absolute right-3 top-1/2 transform -translate-y-1/2 group">
