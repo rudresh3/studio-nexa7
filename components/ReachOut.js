@@ -303,7 +303,7 @@ const ReachOut = () => {
                     <img
                       src="/right-arrow.svg"
                       alt="submit"
-                      className="w-5 h-5 lg:w-8 lg:h-8 transition-all duration-500 ease-in-out absolute left-[calc(50%+40px)] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 [filter:invert(0)] dark:[filter:invert(1)]"
+                      className="w-5 h-5 lg:w-6 lg:h-6 transition-all duration-500 ease-in-out absolute left-[calc(50%+40px)] opacity-0 translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 [filter:invert(0)] dark:[filter:invert(1)]"
                     />
                   )}
                 </div>
