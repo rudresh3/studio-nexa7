@@ -10,13 +10,13 @@ const Header = () => {
       <div>
         {theme === "dark" ? (
           <img
-            src="/reva-logo-with-name-white.svg"
+            src="/Logo-1.svg"
             alt="Dark mode logo"
             className="w-[106px] h-[33px] lg:w-[184px] lg:h-[63px]"
           />
         ) : (
           <img
-            src="/reva-logo-with-name-black.svg"
+            src="/Logo.svg"
             alt="Light mode logo"
             className="w-[106px] h-[33px] lg:w-[184px] lg:h-[63px]"
           />
