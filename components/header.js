@@ -10,15 +10,15 @@ const Header = () => {
       <div>
         {theme === "dark" ? (
           <img
-            src="/Logo-1.svg"
+            src="/reva-logo-with-name-white.svg"
             alt="Dark mode logo"
-            className="w-[106px] h-[33px] lg:w-[174px] lg:h-[53px]"
+            className="w-[106px] h-[33px] lg:w-[184px] lg:h-[63px]"
           />
         ) : (
           <img
-            src="/Logo.svg"
+            src="/reva-logo-with-name-black.svg"
             alt="Light mode logo"
-            className="w-[106px] h-[33px] lg:w-[174px] lg:h-[53px]"
+            className="w-[106px] h-[33px] lg:w-[184px] lg:h-[63px]"
           />
         )}
       </div>
@@ -52,7 +52,7 @@ const Header = () => {
             />
           </div>
           <a 
-            href="https://wa.me/8553393366"
+            href="https://wa.me/"
             target="_blank" 
             rel="noopener noreferrer"
             className="text-white dark:text-[#121212] group-hover:text-[#121212] dark:group-hover:text-white transition-all duration-300 text-[12px] lg:text-[20px] lg:tracking-[-0.4px] font-semibold leading-normal"

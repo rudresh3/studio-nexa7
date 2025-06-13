@@ -47,15 +47,15 @@ export default function Home() {
       <div className="mt-[40px] md:mt-[46px] flex justify-center lg:mt-[102px]">
         {theme === "dark" ? (
           <img
-            src="/Logo-1.svg"
+            src="/reva-logo-with-name-white.svg"
             alt="Dark mode illustration"
-            className="w-[87px] h-[27px] md:w-[107px] md:h-[37px] lg:w-[177px] lg:h-[54px]"
+            className="w-[87px] h-[27px] md:w-[107px] md:h-[37px] lg:w-[197px] lg:h-[74px]"
           />
         ) : (
           <img
-            src="/Logo.svg"
+            src="/reva-logo-with-name-black.svg"
             alt="Light mode illustration"
-            className="w-[87px] h-[27px] md:w-[107px] md:h-[37px] lg:w-[177px] lg:h-[54px]"
+            className="w-[87px] h-[27px] md:w-[107px] md:h-[37px] lg:w-[197px] lg:h-[74px]"
           />
         )}
       </div>
